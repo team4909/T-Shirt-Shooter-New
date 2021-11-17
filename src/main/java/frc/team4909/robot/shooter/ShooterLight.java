@@ -75,10 +75,15 @@ public static double map(double value, double old_min, double old_max, double ne
                 
             }
             leds.setData(ledBuffer);
-            SmartDashboard.putBoolean("On", false);
+            
         }
 
-        SmartDashboard.putNumber("PSI", 250.0 * analogSensor.getVoltage() / 5.0 - 25.0);
+        SmartDashboard.putNumber("PSI", psi);
+        if (psi >= 60) {
+            SmartDashboard.putBoolean("On", true);
+        } else {
+            SmartDashboard.putBoolean("On", false);
+        }
     }
 
     @Override

@@ -26,7 +26,8 @@ public class ShooterLight extends Subsystem {
     @Override
     public void periodic() {
         double psi = 250.0 * analogSensor.getVoltage() / 5.0 - 25.0;
-        double mapped_psi = map(psi, 25, 60, 0, led_length);
+        SmartDashboard.putNumber("analog Sensor", analogSensor.getVoltage());
+        double mapped_psi = map(psi, 25, 51, 0, led_length);
         if (mapped_psi > led_length) {mapped_psi = led_length;}
         if (mapped_psi < 0) {mapped_psi = 0;}
         {
@@ -48,6 +49,8 @@ public class ShooterLight extends Subsystem {
         } else {
             SmartDashboard.putBoolean("Ready", false);
         }
+
+        SmartDashboard.putNumber("PSI", 250.0 * analogSensor.getVoltage() / 5.0 - 25.0);
     }
 
      /**
